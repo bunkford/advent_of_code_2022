@@ -4,15 +4,16 @@ type Move = enum Rock = 1, Paper, Scissor, Draw
 
 proc to_enum(c:string):Move =
   case c:
-    of "A", "X": return Rock
-    of "B", "Y": return Paper
-    of "C", "Z": return Scissor
+    of "A", "X": Rock
+    of "B", "Y": Paper
+    of "C", "Z": Scissor
+    else: raise
 
 proc what_wins(a, b:Move):Move =
   case abs(ord(b) - ord(a)):
-    of 0: return Draw
-    of 1: return max(a, b)
-    else: return min(a, b)
+    of 0: Draw
+    of 1: max(a, b)
+    else: min(a, b)
 
 let moves = (getAppDir() / "aoc_2022_02.txt").lines.toSeq.mapIt(it.split(" ").mapIt(it.to_enum))
 
