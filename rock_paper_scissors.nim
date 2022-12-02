@@ -24,4 +24,26 @@ proc part1(moves: seq[seq[Move]]):int =
     elif winner == move[1]: result.inc ord(move[1]) + 6 # win
     else: result.inc ord(move[1]) # loss
 
+proc part2(moves: seq[seq[Move]]):int =
+  # Rock means you need to lose, 
+  # Paper means you need to end the round in a draw
+  # Scissors means you need to win
+  for move in moves:
+    case move[1]:
+      of Rock: # lose
+        for i in Move: 
+          if what_wins(move[0], i) notin [Draw, move[1]]: 
+            result.inc ord(what_wins(move[0], i))
+            break
+      of Paper: 
+        result.inc ord(move[0]) + 3
+      of Scissor:
+        for i in Move:
+          if what_wins(move[0], i) == i:
+            result.inc ord(i) + 6
+            break
+      else:
+        discard
+
 echo "Answer Part 1: ", part1(moves)
+echo "Answer Part 2: ", part2(moves)
