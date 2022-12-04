@@ -1,4 +1,4 @@
-import os, strutils, sets, sequtils
+import os, strutils
 
 var part1:int
 for line in (getAppDir() / "aoc_2022_03.txt").lines:
