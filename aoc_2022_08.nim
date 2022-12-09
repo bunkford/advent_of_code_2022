@@ -1,4 +1,4 @@
-import os, strutils, sequtils, math, algorithm
+import os, strutils, sequtils, algorithm
 
 var data = (getAppDir() / "aoc_2022_08.txt").lines.toSeq.mapIt(it.toSeq.mapIt(($it).parseInt))
 
