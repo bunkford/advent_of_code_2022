@@ -1,6 +1,6 @@
 import os, strutils, sequtils, tables, math
 
-var data = (getAppDir() / "aoc_2022_07.txt").lines.toSeq
+var data = (getAppDir() / "aoc_2022_07.test").lines.toSeq
 
 
 proc get_folders(data:seq[string]): Table[string, int] =
